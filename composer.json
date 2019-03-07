@@ -1,0 +1,22 @@
+{
+	"name": "volnix/simpl-sql",
+	"description": "CSRF protection library that compares provided token to session token to ensure request validity.",
+	"license": "MIT",
+	"homepage": "https://github.com/volnix/csrf",
+	"authors": [
+		{
+			"name": "Nick Volgas",
+			"email": "nvolgas@ark.org"
+		}
+	],
+	"autoload": {
+        "psr-4": {
+            "Simpl\\": "src/"
+        }
+    },
+    "require": {
+	  "php": ">= 5.1.0"
+    },
+    
+    "minimum-stability": "dev"
+}
