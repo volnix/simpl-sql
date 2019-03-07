@@ -1,8 +1,8 @@
 {
 	"name": "volnix/simpl-sql",
-	"description": "CSRF protection library that compares provided token to session token to ensure request validity.",
+	"description": "A dead-simple layer on top of PDO to make PDO setup and querying simpler",
 	"license": "MIT",
-	"homepage": "https://github.com/volnix/csrf",
+	"homepage": "https://github.com/volnix/simpl-sql",
 	"authors": [
 		{
 			"name": "Nick Volgas",
