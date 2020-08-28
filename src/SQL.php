@@ -13,14 +13,18 @@ class SQL
 	 * SQL constructor.
 	 * @param $host
 	 * @param $db
-	 * @param $user
+	 * @param null $user
 	 * @param null $pass
 	 */
-	public function __construct($host, $db, $user, $pass = null)
+	public function __construct($host, $db, $user = null, $pass = null)
 	{
 		$charset = 'utf8mb4';
 
-		$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+		if ($host == 'sqlite') {
+			$dsn = "sqlite:$db";
+		} else {
+			$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+		}
 
 		$options = [
 			\PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
@@ -165,7 +169,12 @@ class SQL
 
 		foreach ($parts as $field=>$val) {
 			$sql.=$field . ', ';
-			$sql2.= $this->pdo->quote($val) . ", ";
+
+			if ($val === null) {
+				$sql2.= 'NULL' . ", ";
+			} else {
+				$sql2.= $this->pdo->quote($val) . ", ";
+			}
 		}
 		$sql = preg_replace("/, $/", "", $sql);
 		$sql2 = preg_replace("/, $/", "", $sql2);
@@ -188,7 +197,12 @@ class SQL
 
 		foreach ($parts as $field=>$val) {
 			$sql.=$field . ', ';
-			$sql2.= $this->pdo->quote($val) . ", ";
+
+			if ($val === null) {
+				$sql2.= 'NULL' . ", ";
+			} else {
+				$sql2.= $this->pdo->quote($val) . ", ";
+			}
 		}
 		$sql = preg_replace("/, $/", "", $sql);
 		$sql2 = preg_replace("/, $/", "", $sql2);
